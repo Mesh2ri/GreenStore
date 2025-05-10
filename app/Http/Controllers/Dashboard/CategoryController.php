@@ -14,13 +14,13 @@ class CategoryController extends Controller
         return view('dashboard.categories.index', compact('categories'));
     }
 
-    // عرض نموذج الإضافة
+
     public function create()
     {
         return view('dashboard.categories.form');
     }
 
-    // تخزين تصنيف جديد
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -36,14 +36,14 @@ class CategoryController extends Controller
         return redirect()->route('dashboard.categories.index')->with('success', 'تمت إضافة التصنيف بنجاح');
     }
 
-    // عرض نموذج التعديل
+    
     public function edit($id)
     {
         $category = Category::findOrFail($id);
         return view('dashboard.categories.form', compact('category'));
     }
 
-    // تحديث تصنيف
+    
     public function update(Request $request, $id)
 {
     $category = Category::findOrFail($id);
@@ -62,7 +62,7 @@ class CategoryController extends Controller
 }
 
 
-    // حذف تصنيف
+    
     public function destroy($id)
     {
         $category = Category::findOrFail($id);
