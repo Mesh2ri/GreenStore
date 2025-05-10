@@ -13,7 +13,7 @@ class ProductController extends Controller
 
     public function index()
 {
-    $products = Product::with('category')->get(); // جلب كل المنتجات مع تصنيفاتها
+    $products = Product::with('category')->get();
 
     return view('website.products', compact('products'));
 }
