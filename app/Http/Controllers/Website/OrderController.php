@@ -48,12 +48,12 @@ class OrderController extends Controller
             return redirect()->route('cart.view')->with('error', 'سلة المشتريات فارغة.');
         }
 
-        // حساب الإجمالي الكلي
+        
         $total = array_sum(array_map(function ($item) {
             return $item['price'] * $item['quantity'];
         }, $cart));
 
-        // إنشاء الطلب مع total_price
+        
         $order = Order::create([
             'user_id' => Auth::id(),
             'status' => 'pending',
@@ -98,7 +98,7 @@ class OrderController extends Controller
     public function destroy($id)
     {
         $order = Order::where('user_id', Auth::id())->findOrFail($id);
-        $order->items()->delete(); // حذف العناصر المرتبطة
+        $order->items()->delete(); 
         $order->delete();
 
         return redirect()->route('user.orders.index')->with('success', 'تم حذف الطلب بنجاح.');
