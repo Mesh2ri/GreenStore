@@ -55,7 +55,7 @@ class DashboardController extends Controller
             'created_at'
         ]);
 
-        // إضافة عدد المنتجات لكل طلب
+        
         foreach ($orders as $order) {
             $order->products_count = $order->items()->count();
         }
