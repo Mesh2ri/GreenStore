@@ -10,21 +10,21 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    // عرض كل المنتجات
+    
     public function index()
     {
         $products = Product::with('category')->get();
         return view('dashboard.products.index', compact('products'));
     }
 
-    // عرض نموذج الإضافة
+    
     public function create()
     {
         $categories = Category::all();
         return view('dashboard.products.form', compact('categories'));
     }
 
-    // تخزين المنتج الجديد
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -54,7 +54,7 @@ class ProductController extends Controller
     }
 
 
-    // عرض نموذج التعديل
+    
     public function edit($id)
     {
         $product = Product::findOrFail($id);
@@ -62,7 +62,7 @@ class ProductController extends Controller
         return view('dashboard.products.form', compact('product', 'categories'));
     }
 
-    // تحديث بيانات المنتج
+    
     public function update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
@@ -93,12 +93,12 @@ class ProductController extends Controller
     }
 
 
-    // حذف المنتج
+    
     public function destroy($id)
     {
         $product = Product::findOrFail($id);
 
-        // حذف الصورة من التخزين
+        
         if ($product->image) {
             Storage::disk('public')->delete($product->image);
         }
