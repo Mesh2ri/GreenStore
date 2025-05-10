@@ -41,7 +41,7 @@ class ProductController extends Controller
         $product->description = $request->description;
         $product->price = $request->price;
         $product->stock = $request->stock;
-        $product->categories_id = $request->categories_id;
+        $product->category_id = $request->categories_id;
 
         if ($request->hasFile('image')) {
             $path = $request->file('image')->store('products', 'public');
