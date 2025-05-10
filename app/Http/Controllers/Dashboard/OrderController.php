@@ -11,7 +11,7 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::with('user')->latest()->get(); // لعرض اسم المستخدم
+        $orders = Order::with('user')->latest()->get();
         return view('dashboard.orders.index', compact('orders'));
     }
 
